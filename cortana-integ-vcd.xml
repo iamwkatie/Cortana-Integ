@@ -1,0 +1,47 @@
+
+<? xml version = "1.0" encoding  = "utf-8" ?>
+ 
+<!-- Use v1.1 namespace to utilize PhraseTopic feature --> 
+<VoiceCommands xmlns = "  http://schemas.microsoft.com/voicecommands/1.1 Jump ">
+
+<!-- The CommandSet Name is used to programmatically access the CommandSet --> 
+<CommandSet xml:lang = "en-us" Name = "englishCommands">
+
+<!-- The CommandPrefix provides an alternative to your full app name for invocation --> 
+<CommandPrefix>Menu</CommandPrefix>
+
+<!-- The CommandSet Example appears in the global help alongside your app name --> 
+<Example> I am hungry </Example>
+
+
+<Command Name = "ShowCommand">
+<Example> Show Mains </Example>
+<ListenFor> Show {dictatedShowTerms} </ListenFor>
+<Feedback> Showing in Menu ... </Feedback>
+<Navigate Target = "MainPage.xaml" />
+</Command>
+
+<Command Name  = "NaturalLanguageCommand">
+<Example> I want to eat </Example>
+<ListenFor> {naturalLanguage} </ListenFor>
+<Feedback> Starting Menu ... </Feedback>
+<Navigate Target = "MainPage.xaml" />
+</Command>
+
+
+<PhraseTopic Label = "dictatedShowTerms" Scenario = "Search">
+<Subject> Starters </Subject>
+<Subject> Mains </Subject>
+<Subject> Desserts </Subject>
+<Subject> Beverages </Subject>
+<Subject> Special Offers </Subject>
+</PhraseTopic>
+
+<PhraseTopic Label = "naturalLanguage" Scenario = "Natural Language">
+<Subject> I want to eat </Subject>
+<Subject> I want to drink </Subject>
+<Subject> I am hungry </Subject>
+</PhraseTopic>
+
+</CommandSet>
+</VoiceCommands>
